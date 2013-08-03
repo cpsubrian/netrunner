@@ -7,9 +7,11 @@ var cli = require('inquirer')
 require('colors');
 
 // Create collections.
-var sets = modeler({name: 'sets', db: db})
-  , cards = modeler({name: 'cards', db: db})
-  , art = modeler({name: 'art', db: db});
+var collections = {
+  sets: modeler({name: 'sets', db: db}),
+  cards: modeler({name: 'cards', db: db}),
+  art: modeler({name: 'art', db: db})
+};
 
 // Start off the list.
 start();
@@ -53,25 +55,76 @@ function start (err) {
   });
 }
 
-// List the sets.
-function listSets () {
+// Load all sets.
+function loadSets (cb) {
   var stack = createStack();
-  sets.list(function (err, results) {
+  collections.sets.list(function (err, results) {
     results.forEach(function (id) {
       stack.add(function (next) {
-        sets.load(id, function (err, set) {
-          if (err) return next(err);
-          console.log('  - ', set.name, (' (' + set.search + ')').grey);
-          next();
-        });
+        collections.sets.load(id, next);
       });
     });
-    stack.runSeries(start);
+    stack.runSeries(cb);
+  });
+}
+
+// List the sets.
+function listSets () {
+  loadSets(function (err, sets) {
+    if (err) throw err;
+    sets.forEach(function (set) {
+      console.log('  - ', set.name, (' (' + set.search + ')').grey);
+    });
+    start();
+  });
+}
+
+// Load all the cards.
+function loadCards (cb) {
+  var stack = createStack();
+  collections.cards.list(function (err, results) {
+    results.forEach(function (id) {
+      stack.add(function (next) {
+        collections.cards.load(id, next);
+      });
+    });
+    stack.runSeries(cb);
   });
 }
 
 // List the cards.
 function listCards () {
+  loadSets(function (err, sets) {
+    if (err) throw err;
+    // Prompt questions.
+    var questions = [
+      {
+        type: 'list',
+        name: 'set',
+        message: 'Which set of cards do you want to list?',
+        default: 'Core',
+        choices: sets.map(function (set) {
+          return set.name;
+        })
+      }
+    ];
 
+    cli.prompt(questions, function (answers) {
+      loadCards(function (err, cards) {
+        if (err) throw err;
+        var setCards = _(cards).filter(function (card) {
+          return card.setname === answers.set;
+        });
+        setCards.sort(function (a, b) {
+          if (a.title < b.title) return -1;
+          if (a.title > b.title) return 1;
+          return 0;
+        });
+        setCards.forEach(function (card) {
+          console.log('  - ', card.title);
+        });
+        start();
+      });
+    });
+  });
 }
-

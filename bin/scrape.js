@@ -28,6 +28,7 @@ hooks('main').add(function (result, next) {
       collections.sets.load(item.name, function (err, set) {
         if (err) return next(err);
         set = set ? _(set).extend(item) : collections.sets.create(item);
+        set.id = set.name;
         console.log('  - Saving set: ', set.name);
         collections.sets.save(set, next);
       });

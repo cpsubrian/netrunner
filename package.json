@@ -14,7 +14,8 @@
     "underscore": "~1.5.1",
     "inquirer": "~0.2.3",
     "stact": "0.0.11",
-    "colors": "~0.6.1"
+    "colors": "~0.6.1",
+    "search-index": "~0.2.7"
   },
   "repository": {
     "type": "git",

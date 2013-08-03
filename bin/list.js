@@ -30,7 +30,8 @@ function start (err) {
       choices: [
         {name: 'Sets', value: 'sets'},
         {name: 'Cards', value: 'cards'},
-        {name: 'Decks', value: 'decks'}
+        {name: 'Decks', value: 'decks'},
+        {name: 'Quit', value: 'quit'}
       ]
     }
   ];
@@ -43,6 +44,8 @@ function start (err) {
         return listSets();
       case 'cards':
         return listCards();
+      case 'quit':
+        return process.exit();
       default:
         console.log('Not implemented yet');
         return start();

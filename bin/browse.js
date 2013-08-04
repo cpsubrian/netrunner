@@ -2,7 +2,13 @@ var cli = require('inquirer')
   , _ = require('underscore')
   , createStack = require('stact')
   , modeler = require('modeler-leveldb')
-  , db = require('levelup')(require('path').resolve(__dirname, '../data/cards'));
+  , db = require('levelup')(require('path').resolve(__dirname, '../data/cards'))
+  , index = require('lunr')(function () {
+    this.field('title', {boost: 10});
+    this.field('text');
+    this.ref('id');
+  })
+  , indexed = false;
 
 require('colors');
 
@@ -27,12 +33,12 @@ function start (err) {
     {
       type: 'list',
       name: 'type',
-      message: 'What shall we list?',
+      message: 'What shall we browse?',
       default: 'sets',
       choices: [
-        {name: 'Sets', value: 'sets'},
-        {name: 'Cards', value: 'cards'},
-        {name: 'Decks', value: 'decks'},
+        {name: 'Search', value: 'search'},
+        {name: 'List Sets', value: 'sets'},
+        {name: 'List Cards', value: 'cards'},
         {name: 'Quit', value: 'quit'}
       ]
     }
@@ -46,6 +52,8 @@ function start (err) {
         return listSets();
       case 'cards':
         return listCards();
+      case 'search':
+        return search();
       case 'quit':
         return process.exit();
       default:
@@ -80,7 +88,12 @@ function listSets () {
 }
 
 // Load all the cards.
-function loadCards (cb) {
+function loadCards (ids, cb) {
+  if (!cb) {
+    cb = ids;
+    ids = null;
+  }
+
   var stack = createStack();
   collections.cards.list(function (err, results) {
     results.forEach(function (id) {
@@ -88,8 +101,27 @@ function loadCards (cb) {
         collections.cards.load(id, next);
       });
     });
-    stack.runSeries(cb);
+    stack.runSeries(function (err, cards) {
+      if (err) return cb(err);
+      if (ids) {
+        cb(null, _(cards).filter(function (card) {
+          return ids.indexOf(card.id) >= 0;
+        }));
+      }
+      else {
+        cb(null, cards);
+      }
+    });
   });
+}
+
+// Convert cards array to hash.
+function cardsById (cards) {
+  var hash = {};
+  cards.forEach(function (card) {
+    hash[card.id] = card;
+  });
+  return hash;
 }
 
 // List the cards.
@@ -128,3 +160,47 @@ function listCards () {
     });
   });
 }
+
+// Search.
+function search () {
+  var stack = createStack();
+  if (!indexed) {
+    stack.add(indexCards);
+  }
+  stack.add(function (next) {
+    var questions = [
+      {
+        name: 'query',
+        message: 'Enter search query:'
+      }
+    ];
+    cli.prompt(questions, function (answers) {
+      console.log('');
+      var results = index.search(answers.query).slice(0, 10);
+      loadCards(function (err, cards) {
+        if (err) throw err;
+        cards = cardsById(cards);
+        results.forEach(function (result) {
+          console.log(cards[result.ref].title.green);
+          console.log(cards[result.ref].text.grey);
+          console.log('');
+        });
+        start();
+      });
+    });
+  });
+  stack.runSeries(start);
+}
+
+// Add all cards to the search index.
+function indexCards (cb) {
+  console.log('Indexing cards ...');
+  loadCards(function (err, cards) {
+    cards.forEach(function (card) {
+      index.add(card);
+    });
+    indexed = true;
+    cb();
+  });
+}
+

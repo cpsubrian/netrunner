@@ -1,6 +1,7 @@
 var cli = require('inquirer')
   , _ = require('underscore')
   , createStack = require('stact')
+  , request = require('request')
   , modeler = require('modeler-leveldb')
   , db = require('levelup')(require('path').resolve(__dirname, '../data/cards'))
   , index = require('lunr')(function () {

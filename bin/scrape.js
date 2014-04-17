@@ -1,10 +1,11 @@
-var hooks = require('stact-hooks')()
+var pkg = require('../package.json')
+  , hooks = require('stact-hooks')()
   , request = require('request')
   , cheerio = require('cheerio')
   , _ = require('underscore')
   , modeler = require('modeler-leveldb')
   , db = require('levelup')(require('path').resolve(__dirname, '../data/cards'))
-  , base = 'http://netrunnercards.info/api/';
+  , base = pkg.conf.base_url;
 
 // Create collections.
 var collections = {
@@ -77,5 +78,8 @@ hooks('main').add(function (sets, next) {
 
 // Run the main routine.
 console.log('');
-hooks('main').runWaterfall(process.exit);
+hooks('main').runWaterfall(function (err) {
+  if (err) console.error(err);
+  process.exit();
+});
 

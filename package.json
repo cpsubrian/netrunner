@@ -23,5 +23,7 @@
     "url": "git://github.com/cpsubrian/netrunner.git"
   },
   "author": "Brian Link <cpsubrian@gmail.com>",
-  "license": "MIT"
+  "conf": {
+    "base_url": "http://netrunnerdb.com/api/"
+  }
 }

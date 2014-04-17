@@ -1,4 +1,5 @@
-var cli = require('inquirer')
+var pkg = require('../package.json')
+  , cli = require('inquirer')
   , _ = require('underscore')
   , createStack = require('stact')
   , request = require('request')

@@ -1,29 +1,41 @@
 {
+  "private": true,
+  "dependencies": {
+    "cantina": "cantina/cantina#3.x",
+    "cantina-web": "cantina/cantina-web#3.2.x",
+    "cantina-amino": "cantina/cantina-amino#3.x",
+    "cantina-redis": "cantina/cantina-redis#3.x",
+    "cantina-mongo": "cantina/cantina-mongo#3.x",
+    "cantina-log": "cantina/cantina-log#3.x",
+    "cantina-models": "cantina/cantina-models#3.1.x",
+    "cantina-validators": "cantina/cantina-validators#3.x",
+    "cantina-session": "cantina/cantina-session#3.x",
+    "cantina-auth": "cantina/cantina-auth#3.x",
+    "cantina-email": "cantina/cantina-email#3.x",
+    "cantina-tokens": "cantina/cantina-tokens#3.x",
+    "cantina-models-schemas": "cantina/cantina-models-schemas#master",
+    "idgen": "~1.3.0",
+    "underscore": "1.6.0"
+  },
+  "devDependencies": {
+    "mocha": "^1.18.2"
+  },
+  "scripts": {
+    "test": "make test"
+  },
   "name": "netrunner",
   "version": "0.0.0",
-  "private": true,
-  "description": "Experimenting with NetRunner cards and data.",
-  "dependencies": {
-    "request": "~2.25.0",
-    "cheerio": "~0.12.1",
-    "stact-hooks": "0.0.3",
-    "modeler": "~0.4.3",
-    "modeler-leveldb": "~0.3.0",
-    "levelup": "~0.12.0",
-    "leveldown": "~0.6.2",
-    "underscore": "~1.5.1",
-    "inquirer": "~0.2.3",
-    "stact": "0.0.11",
-    "colors": "~0.6.1",
-    "search-index": "~0.2.7",
-    "lunr": "~0.4.1"
+  "main": "netrunner.js",
+  "directories": {
+    "test": "test"
   },
   "repository": {
     "type": "git",
     "url": "git://github.com/cpsubrian/netrunner.git"
   },
-  "author": "Brian Link <cpsubrian@gmail.com>",
-  "conf": {
-    "base_url": "http://netrunnerdb.com/api/"
-  }
+  "author": "",
+  "bugs": {
+    "url": "https://github.com/cpsubrian/netrunner/issues"
+  },
+  "homepage": "https://github.com/cpsubrian/netrunner"
 }

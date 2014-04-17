@@ -1,0 +1,12 @@
+{
+  "name": "netrunner",
+  "main": "netrunner.js",
+  "version": "0.0.0",
+  "homepage": "https://github.com/cpsubrian/netrunner",
+  "authors": [
+    "Brian Link <cpsubrian@gmail.com>"
+  ],
+  "dependencies": {
+    "three.js": "*"
+  }
+}

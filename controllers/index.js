@@ -4,6 +4,6 @@ var app = require('cantina')
 controller.get(['/'], index);
 
 function index (req, res, next) {
-  res.vars.title = 'Welcome';
-  res.render('home', res.vars);
+  res.vars.title = 'Game';
+  res.render('game', res.vars);
 }

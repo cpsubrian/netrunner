@@ -6,7 +6,5 @@
   "authors": [
     "Brian Link <cpsubrian@gmail.com>"
   ],
-  "dependencies": {
-    "three.js": "*"
-  }
+  "dependencies": {}
 }

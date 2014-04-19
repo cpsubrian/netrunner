@@ -16,14 +16,36 @@ div {
   height: 100%;
 }
 
-/* Player Text Colors */
-.chat .corp,
-.corp .player .name {
-  color: #289EE2;
+/* Glass Area */
+.glass {
+  position: relative;
+  background: rgba(190, 190, 190, 0.45);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 5px;
+  margin: 5px;
+  color: #fff;
 }
-.chat .runner,
-.runner .player .name {
-  color: #E54333;
+
+/* Bordered Area */
+.area {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 5px;
+  border-radius: 5px;
+}
+.area .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.55);
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: -5px;
+  border-top-left-radius: 4px;
+  border-bottom-right-radius: 5px;
+  padding: 0 3px;
+  text-transform: uppercase;
+  font-size: 0.85em;
 }
 
 /* Sidebar */
@@ -32,28 +54,17 @@ div {
   flex-direction: column;
   width: 240px;
 }
-.sidebar .turn,
-.sidebar .chat {
-  background: rgba(190, 190, 190, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
-  margin: 5px;
-}
 .sidebar .turn {
   flex: 1 0 auto;
+  display: flex;
 }
 .sidebar .chat {
   height: 200px;
+  display: flex;
 }
-.sidebar .header {
-  padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #bbb;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  font-weight: 300;
-  font-size: 0.7em;
+.sidebar .area {
+  flex: 1 0;
+  padding: 15px 5px 10px 5px;
 }
 .sidebar .chat .messages {
   margin: 0;
@@ -74,6 +85,12 @@ div {
 .sidebar .chat .messages li.corp {
   margin-left: 15px;
 }
+.sidebar .chat .corp {
+  color: #289EE2;
+}
+.sidebar .chat .runner {
+  color: #E54333;
+}
 
 
 /* Game Area */
@@ -83,63 +100,61 @@ div {
   flex-direction: column;
   height: 100%;
 }
+
 .board {
   position: relative;
   display: flex;
-  flex-direction: column;
   flex: 1 0 auto;
   align-content: center;
-  margin: 5px;
-  background: rgba(190, 190, 190, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 5px;
 }
+.board.corp {
+  flex: 2 0 auto;
+}
+
 .hud {
   display: flex;
-  padding: 5px 10px;
-  background: rgba(0, 0, 0, 0.6);
-  color: #fff;
-  text-shadow: 1px 1px rgba(0, 0, 0, 0.2);
+  flex-direction: column;
+  width: 150px;
+}
+.hud .player .name {
+  text-align: center;
+  padding: 15px 10px 10px 10px;
 }
 .hud .stats {
-  flex: 1 0 auto;
   display: flex;
+  flex-wrap: wrap;
   font-weight: 600;
-  font-size: 1.1em;
+  padding-top: 20px;
+}
+.corp .hud .stats {
+  height: 6em;
+}
+.runner .hud .stats {
+  height: 9em;
 }
 .hud .stats > div {
-  flex: 1 0 auto;
+  width: 50%;
   text-align: center;
 }
-.hud .stats .label,
-.hud .stats i,
+.hud .stats .stat,
 .hud .stats .total {
-  color: #bbb;
+  color: #ddd;
 }
 .hud .stats i {
   font-weight: bold;
 }
-.hud .stats .label {
-  font-weight: 300;
+.hud .stats .label,
+.hud .stats .stat {
+  font-weight: normal;
 }
 .hud .stats .total {
   font-size: 0.8em;
 }
-.hud .player .side {
-  text-transform: uppercase;
-  font-size: 0.7em;
-  color: #bbb;
+.hud .score {
+  flex: 1 0 auto;
 }
-.corp .hud {
-  order: 0;
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-}
-.runner .hud {
-  order: 1;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
+
+
 .playmat {
   flex: 1 0 auto;
   display: flex;
@@ -162,32 +177,12 @@ div {
   display: flex;
   flex-direction: column;
 }
-.servers .server .label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  font-weight: 300;
-  background: rgba(255, 255, 255, 0.4);
-  color: rgba(0, 0, 0, 0.6);
-  margin-bottom: -5px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 0 3px;
-  font-size: 0.85em;
-}
 .servers .server .root {
-  position: relative;
   flex: 1 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.4);
   margin: 5px;
-  border-radius: 5px;
 }
 .servers .server .ice {
   flex: 1 0 auto;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  margin: 5px;
-  border-radius: 5px;
 }
 
 /* Rig */
@@ -205,27 +200,6 @@ div {
   flex: 1 0 auto;
   display: flex;
   order: 1;
-}
-.rig .label {
-  position: absolute;
-  top: 0;
-  left: 0;
-  display: inline-block;
-  font-weight: 300;
-  background: rgba(255, 255, 255, 0.4);
-  color: rgba(0, 0, 0, 0.6);
-  margin-bottom: -5px;
-  border-top-left-radius: 5px;
-  border-bottom-right-radius: 5px;
-  padding: 0 3px;
-  font-size: 0.85em;
-}
-.rig .single,
-.rig .zone {
-  position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  margin: 5px;
-  border-radius: 5px;
 }
 .rig .single {
   width: 100px;

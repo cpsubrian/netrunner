@@ -4,19 +4,23 @@
   <div class="sidebar">
 
     <!-- Turn -->
-    <div class="turn">
-      <div class="header">Turn Summary</div>
+    <div class="turn glass">
+      <div class="area">
+        <div class="label">Turn Summary</div>
+      </div>
     </div>
 
     <!-- Chat -->
-    <div class="chat">
-      <div class="header">Player Chat</div>
-      <ul class="messages">
-        <li class="runner">Hey dude!</li>
-        <li class="runner">hows it going, long time no see</li>
-        <li class="corp">Not much man. Got this new deck I'm trying to play around with.</li>
-        <li class="runner">be gentle :)</li>
-      </ul>
+    <div class="chat glass">
+      <div class="area">
+        <div class="label">Player Chat</div>
+        <ul class="messages">
+          <li class="runner">Hey dude!</li>
+          <li class="runner">hows it going, long time no see</li>
+          <li class="corp">Not much man. Got this new deck I'm trying to play around with.</li>
+          <li class="runner">be gentle :)</li>
+        </ul>
+      </div>
     </div>
   </div>
 
@@ -24,48 +28,52 @@
   <div class="game">
 
     <!-- Corp Area -->
-    <div class="corp board">
+    <div class="corp board glass">
       <div class="hud">
-        <div class="player">
-          <span class="side">Corp:</span>
-          <span class="name">cpsubrian</span>
+        <div class="player area">
+          <div class="label">Corp</div>
+          <div class="name">cpsubrian</div>
         </div>
-        <div class="stats">
+        <div class="stats area">
+          <div class="label">Stats</div>
           <div class="credits">
-            <i class="nr nr-credit"></i> <span class="count">8</span>
+            <i class="nr nr-credit stat"></i> <span class="count">8</span>
           </div>
           <div class="badpub">
-            <span class="label">BP</span> <span class="count">0</span>
+            <span class="stat">BP</span> <span class="count">0</span>
           </div>
           <div class="handsize">
-            <span class="label">Cards</span> <span class="count">4</span><span class="total">/5</span>
+            <span class="stat">Hand</span> <span class="count">4</span><span class="total">/5</span>
           </div>
+        </div>
+        <div class="score area">
+          <div class="label">Score Area</div>
         </div>
       </div>
       <div class="playmat">
         <div class="servers">
           <div class="centrals">
             <div class="archives trash server">
-              <div class="root"><div class="label">Arcvhies</div></div>
-              <div class="ice"></div>
+              <div class="root area"><div class="label">Arcvhies</div></div>
+              <div class="ice area"></div>
             </div>
             <div class="hq identity server">
-              <div class="root"><div class="label">HQ</div></div>
-              <div class="ice"></div>
+              <div class="root area"><div class="label">HQ</div></div>
+              <div class="ice area"></div>
             </div>
             <div class="rd server">
-              <div class="root"><div class="label">R&amp;D</div></div>
-              <div class="ice"></div>
+              <div class="root area"><div class="label">R&amp;D</div></div>
+              <div class="ice area"></div>
             </div>
           </div>
           <div class="remotes">
             <div class="remote server">
-              <div class="root"><div class="label">Remote</div></div>
-              <div class="ice"></div>
+              <div class="root area"><div class="label">Remote</div></div>
+              <div class="ice area"></div>
             </div>
             <div class="remote server">
-              <div class="root"><div class="label">Remote</div></div>
-              <div class="ice"></div>
+              <div class="root area"><div class="label">Remote</div></div>
+              <div class="ice area"></div>
             </div>
           </div>
         </div>
@@ -73,59 +81,61 @@
     </div>
 
     <!-- Runner Area -->
-    <div class="runner board">
+    <div class="runner board glass">
       <div class="hud">
-        <div class="player">
-          <span class="side">Runner:</span>
-          <span class="name">joshstender</span>
+        <div class="player area">
+          <div class="label">Runner</div>
+          <div class="name">joshstender</div>
         </div>
-        <div class="stats">
+        <div class="stats area">
+          <div class="label">Stats</div>
           <div class="credits">
-            <i class="nr nr-credit"></i> <span class="count">11</span>
+            <i class="nr nr-credit stat"></i> <span class="count">11</span>
           </div>
           <div class="link">
-            <i class="nr nr-link"></i> <span class="count">1</span>
+            <i class="nr nr-link stat"></i> <span class="count">1</span>
           </div>
           <div class="memory">
-            <i class="nr nr-mu"></i> <span class="count">4</span>
+            <i class="nr nr-mu stat"></i> <span class="count">4</span>
           </div>
           <div class="tags">
-            <span class="label">Tags</span> <span class="count">0</span>
+            <span class="stat">Tags</span> <span class="count">0</span>
           </div>
           <div class="brain">
-            <span class="label">BD</span> <span class="count">0</span>
+            <span class="stat">BD</span> <span class="count">0</span>
           </div>
           <div class="handsize">
-            <span class="label">Cards</span> <span class="count">5</span><span class="total">/5</span>
+            <span class="stat">Hand</span> <span class="count">5</span><span class="total">/5</span>
           </div>
+        </div>
+        <div class="score area">
+          <div class="label">Score Area</div>
         </div>
       </div>
       <div class="playmat">
         <div class="rig">
           <div class="secondary">
-            <div class="single console">
+            <div class="zone hardware area">
+              <div class="label">Hardware</div>
+            </div>
+            <div class="single console area">
               <div class="label">Console</div>
             </div>
-            <div class="zone programs">
+            <div class="zone programs area">
               <div class="label">Programs</div>
             </div>
           </div>
-          <div class="secondary">
-            <div class="zone hardware">
-              <div class="label">Hardware</div>
-            </div>
-          </div>
           <div class="main">
-            <div class="single heap trash">
+            <div class="single heap trash area">
               <div class="label">Heap</div>
             </div>
-            <div class="single stack">
+            <div class="single stack area">
               <div class="label">Stack</div>
             </div>
-            <div class="single grip identity">
+            <div class="single grip identity area">
               <div class="label">Grip</div>
             </div>
-            <div class="zone resources">
+            <div class="zone resources area">
               <div class="label">Resources</div>
             </div>
           </div>

@@ -33,7 +33,6 @@ div {
   width: 240px;
 }
 .sidebar .turn,
-.sidebar .action,
 .sidebar .chat {
   background: rgba(190, 190, 190, 0.6);
   border: 1px solid rgba(255, 255, 255, 0.1);
@@ -42,9 +41,6 @@ div {
 }
 .sidebar .turn {
   flex: 1 0 auto;
-}
-.sidebar .action {
-  height: 100px;
 }
 .sidebar .chat {
   height: 200px;
@@ -145,6 +141,96 @@ div {
   border-bottom-right-radius: 5px;
 }
 .playmat {
+  flex: 1 0 auto;
+  display: flex;
+}
+
+/* Servers */
+.servers {
+  flex: 1 0 auto;
+  display: flex;
+  align-content: flex-start;
+}
+.servers .centrals {
+  display: flex;
+}
+.servers .remotes {
+  display: flex;
+}
+.servers .server {
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+}
+.servers .server .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: -5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 3px;
+  font-size: 0.85em;
+}
+.servers .server .root {
+  position: relative;
+  flex: 1 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 5px;
+  border-radius: 5px;
+}
+.servers .server .ice {
+  flex: 1 0 auto;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 5px;
+  border-radius: 5px;
+}
+
+/* Rig */
+.rig {
+  flex: 1 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+.rig .main {
+  flex: 1 0 auto;
+  display: flex;
+  order: 2;
+}
+.rig .secondary {
+  flex: 1 0 auto;
+  display: flex;
+  order: 1;
+}
+.rig .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: inline-block;
+  font-weight: 300;
+  background: rgba(255, 255, 255, 0.4);
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: -5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  padding: 0 3px;
+  font-size: 0.85em;
+}
+.rig .single,
+.rig .zone {
+  position: relative;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  margin: 5px;
+  border-radius: 5px;
+}
+.rig .single {
+  width: 100px;
+}
+.rig .zone {
   flex: 1 0 auto;
 }
 

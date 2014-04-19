@@ -3,11 +3,6 @@
   <!-- Sidebar -->
   <div class="sidebar">
 
-    <!-- Action -->
-    <div class="action">
-      <div class="header">Current Action</div>
-    </div>
-
     <!-- Turn -->
     <div class="turn">
       <div class="header">Turn Summary</div>
@@ -50,13 +45,28 @@
       <div class="playmat">
         <div class="servers">
           <div class="centrals">
-            <div class="area archives trash server"></div>
-            <div class="area hq identity server"></div>
-            <div class-"area rd server"></div>
+            <div class="archives trash server">
+              <div class="root"><div class="label">Arcvhies</div></div>
+              <div class="ice"></div>
+            </div>
+            <div class="hq identity server">
+              <div class="root"><div class="label">HQ</div></div>
+              <div class="ice"></div>
+            </div>
+            <div class="rd server">
+              <div class="root"><div class="label">R&amp;D</div></div>
+              <div class="ice"></div>
+            </div>
           </div>
           <div class="remotes">
-            <div class="area remote server"></div>
-            <div class="area remote server"></div>
+            <div class="remote server">
+              <div class="root"><div class="label">Remote</div></div>
+              <div class="ice"></div>
+            </div>
+            <div class="remote server">
+              <div class="root"><div class="label">Remote</div></div>
+              <div class="ice"></div>
+            </div>
           </div>
         </div>
       </div>
@@ -92,17 +102,33 @@
       </div>
       <div class="playmat">
         <div class="rig">
-          <div class="main">
-            <div class="area resources"></div>
-            <div class="area grip identity"></div>
-            <div class="area stack"></div>
-            <div class="area heap trash"></div>
+          <div class="secondary">
+            <div class="single console">
+              <div class="label">Console</div>
+            </div>
+            <div class="zone programs">
+              <div class="label">Programs</div>
+            </div>
           </div>
           <div class="secondary">
-            <div class="area hardware"></div>
-            <div class="area console"></div>
+            <div class="zone hardware">
+              <div class="label">Hardware</div>
+            </div>
           </div>
-          <div class="area programs"></div>
+          <div class="main">
+            <div class="single heap trash">
+              <div class="label">Heap</div>
+            </div>
+            <div class="single stack">
+              <div class="label">Stack</div>
+            </div>
+            <div class="single grip identity">
+              <div class="label">Grip</div>
+            </div>
+            <div class="zone resources">
+              <div class="label">Resources</div>
+            </div>
+          </div>
         </div>
       </div>
     </div>

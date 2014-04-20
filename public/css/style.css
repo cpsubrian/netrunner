@@ -79,7 +79,7 @@ div {
   margin: 0 0 5px 0;
   padding: 5px;
   list-style: none;
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
 }
 .sidebar .chat .messages li.runner {
@@ -149,6 +149,9 @@ div {
 .hud .stats .label,
 .hud .stats .stat {
   font-weight: normal;
+}
+.hud .stats .count {
+  margin-left: 5px;
 }
 .hud .stats .total {
   font-size: 0.8em;

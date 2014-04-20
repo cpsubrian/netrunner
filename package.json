@@ -15,7 +15,9 @@
     "cantina-tokens": "cantina/cantina-tokens#3.x",
     "cantina-models-schemas": "cantina/cantina-models-schemas#master",
     "idgen": "~1.3.0",
-    "underscore": "1.6.0"
+    "underscore": "1.6.0",
+    "browserify-shim": "^3.4.1",
+    "browserify-dirs": "*"
   },
   "devDependencies": {
     "mocha": "^1.18.2",
@@ -41,5 +43,40 @@
   "bugs": {
     "url": "https://github.com/cpsubrian/netrunner/issues"
   },
-  "homepage": "https://github.com/cpsubrian/netrunner"
+  "homepage": "https://github.com/cpsubrian/netrunner",
+  "browserify": {
+    "transform": [
+      "browserify-shim",
+      "browserify-dirs"
+    ]
+  },
+  "browser": {
+    "jquery": "./public/vendor/jquery.js",
+    "handlebars": "./public/vendor/handlebars.js",
+    "underscore": "./public/vendor/underscore.js",
+    "backbone": "./public/vendor/backbone.js",
+    "marionette": "./public/vendor/backbone.marionette.js",
+    "app": "./public/js/lib/app.js"
+  },
+  "browserify-shim": {
+    "jquery": "$",
+    "handlebars": "Handlebars",
+    "underscore": "_",
+    "backbone": {
+      "exports": "Backbone",
+      "depends": [
+        "underscore:_",
+        "jquery:$"
+      ]
+    },
+    "marionette": {
+      "exports": "Marionette",
+      "depends": [
+        "backbone:Backbone"
+      ]
+    }
+  },
+  "browserify-dirs": {
+    "lib": "./public/js/lib"
+  }
 }

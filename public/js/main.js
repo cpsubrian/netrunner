@@ -12,7 +12,7 @@ require('plugins/mixins');
 
 // Create and attach the play view.
 app.addInitializer(function () {
-  app.play.attachView(new PlayView());
+  app.play.show(new PlayView());
 });
 
 // Start the app.

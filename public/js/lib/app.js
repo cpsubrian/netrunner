@@ -1,1 +1,2 @@
-alert('this is the app');
+var Marionette = require('marionette');
+module.exports = new Marionette.Application();

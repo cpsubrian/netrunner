@@ -77,6 +77,11 @@
     }
   },
   "browserify-dirs": {
-    "lib": "./public/js/lib"
+    "collections": "./public/js/collections",
+    "lib": "./public/js/lib",
+    "mixins": "./public/js/mixins",
+    "models": "./public/js/models",
+    "plugins": "./public/js/plugins",
+    "views": "./public/js/views"
   }
 }

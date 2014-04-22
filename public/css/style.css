@@ -34,17 +34,24 @@ div {
 }
 .area .label {
   position: absolute;
-  top: 0;
-  left: 0;
+  bottom: 0;
+  right: 0;
   display: inline-block;
   background: rgba(255, 255, 255, 0.4);
+  border: 1px solid rgba(0, 0, 0, 0.2);
   color: rgba(0, 0, 0, 0.8);
-  margin-bottom: -5px;
-  border-top-left-radius: 4px;
-  border-bottom-right-radius: 5px;
+  margin-top: -5px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 4px;
   padding: 0 3px;
   text-transform: uppercase;
   font-size: 0.85em;
+  z-index: 1000;
+  cursor: help;
+}
+.area .label:hover {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(0, 0, 0, 0.5);
 }
 
 /* Sidebar */
@@ -67,7 +74,7 @@ div {
 }
 .sidebar .area {
   flex: 1 0;
-  padding: 15px 5px 10px 5px;
+  padding: 5px;
 }
 .sidebar .chat .messages {
   margin: 0;
@@ -79,7 +86,7 @@ div {
   margin: 0 0 5px 0;
   padding: 5px;
   list-style: none;
-  background: rgba(255, 255, 255, 0.8);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 5px;
 }
 .sidebar .chat .messages li.runner {
@@ -129,15 +136,26 @@ div {
   flex-direction: column;
   width: 150px;
 }
+.hud .player .label {
+  bottom: auto;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin-top: 0;
+  text-align: center;
+  border-top-left-radius: 4px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 0;
+}
 .hud .player .name {
   text-align: center;
-  padding: 15px 10px 10px 10px;
+  padding: 20px 5px 8px 5px;
 }
 .hud .stats {
   display: flex;
   flex-wrap: wrap;
   font-weight: 600;
-  padding-top: 20px;
+  padding-top: 5px;
   padding-bottom: 5px;
 }
 .corp .hud .stats {
@@ -194,6 +212,7 @@ div {
   flex-direction: column;
 }
 .servers .server .root {
+  position: relative;
   margin: 5px;
 }
 .servers .server .ice {
@@ -217,10 +236,23 @@ div {
   order: 1;
 }
 .rig .single {
-
+  position: relative;
 }
 .rig .zone {
+  position: relative;
   flex: 1 0 auto;
+}
+
+/* Cards */
+.card {
+  padding: 1px;
+}
+
+/* Single Cards */
+.rig .single .card img,
+.server .root .card img {
+  width: 100%;
+  height: auto;
 }
 
 /* Card Viewer */

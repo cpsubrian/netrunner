@@ -112,11 +112,10 @@ div {
 
 .corp-board {
   display: flex;
-  flex: 2 0 auto;
+  flex: 1 0 auto;
 }
 .runner-board {
   display: flex;
-  flex: 1 0 auto;
 }
 .board {
   position: relative;
@@ -139,6 +138,7 @@ div {
   flex-wrap: wrap;
   font-weight: 600;
   padding-top: 20px;
+  padding-bottom: 5px;
 }
 .corp .hud .stats {
   height: 6em;
@@ -190,12 +190,10 @@ div {
   display: flex;
 }
 .servers .server {
-  width: 100px;
   display: flex;
   flex-direction: column;
 }
 .servers .server .root {
-  flex: 1 0 auto;
   margin: 5px;
 }
 .servers .server .ice {
@@ -219,7 +217,7 @@ div {
   order: 1;
 }
 .rig .single {
-  width: 100px;
+
 }
 .rig .zone {
   flex: 1 0 auto;

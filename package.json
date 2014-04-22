@@ -16,7 +16,9 @@
     "cantina-models-schemas": "cantina/cantina-models-schemas#master",
     "idgen": "~1.3.0",
     "underscore": "1.6.0",
-    "handlebars": "^1.3.0"
+    "handlebars": "^1.3.0",
+    "saw": "^0.5.2",
+    "mkdirp": "^0.3.5"
   },
   "devDependencies": {
     "mocha": "^1.18.2",

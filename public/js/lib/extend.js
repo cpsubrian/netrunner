@@ -1,5 +1,7 @@
+var _ = require('underscore');
+
 // A 2-level-deep extend.
-function extendTwoDeep (defaults, options) {
+module.exports = function extendTwoDeep (defaults, options) {
   var result = {};
   _(defaults).chain().keys().forEach(function (key) {
     result[key] = _(defaults[key]).isObject() ? _(defaults[key]).clone() : defaults[key];
@@ -16,6 +18,4 @@ function extendTwoDeep (defaults, options) {
     }
   });
   return result;
-}
-
-module.exports = extendTwoDeep;
+};

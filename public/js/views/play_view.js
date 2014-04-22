@@ -1,22 +1,20 @@
 var Marionette = require('marionette')
   , CorpView = require('views/corp_view')
-  , RunnerView = require('views/runner_view');
+  , RunnerView = require('views/runner_view')
+  , $ = require('jquery');
 
 module.exports = Marionette.Layout.extend({
-  el: $('.play'),
+  className: 'play',
+  template: require('hbs!play'),
 
   regions: {
-    corp: '.corp',
-    runner: '.runner'
+    corp: '.corp-board',
+    runner: '.runner-board'
   },
 
   initialize: function () {
-    this.corpView = new CorpView({
-      el: this.corp.el
-    });
-    this.runnerView = new RunnerView({
-      el: this.runner.el
-    });
+    this.corpView = new CorpView();
+    this.runnerView = new RunnerView();
   },
 
   onRender: function () {

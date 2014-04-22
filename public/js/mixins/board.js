@@ -1,10 +1,12 @@
-module.exports = {
+var $ = require('jquery');
+
+var board = module.exports = {
   ui: {
     playmat: '.playmat',
     hud: '.hud',
     singles: '.single'
   },
   onRender: function () {
-    console.log(this.ui.singles);
+
   }
 };

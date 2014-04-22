@@ -11,6 +11,17 @@
 </head>
 <body>
   {{{content}}}
-  <script type="text/javascript" src="/build/bundle.js"></script>
+
+  <script src="vendor/require.js"></script>
+  <script src="build/config.js"></script>
+  <script>
+    // Bootstrap the application
+    requirejs(['jquery', 'game'], function ($, app) {
+      // Start the app.
+      $(function () {
+        app.start();
+      });
+    });
+  </script>
 </body>
 </html>

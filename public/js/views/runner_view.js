@@ -2,6 +2,7 @@ var Marionette = require('marionette')
   , Board = require('mixins/board');
 
 module.exports = Marionette.ItemView.extend({
-  template: require('runner.hbs'),
+  className: 'board glass',
+  template: require('hbs!runner'),
   mixins: [Board]
 });

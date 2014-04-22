@@ -97,6 +97,12 @@ div {
 
 
 /* Play Area */
+.play-container {
+  display: flex;
+  flex: 1 0 auto;
+  flex-direction: column;
+  height: 100%;
+}
 .play {
   display: flex;
   flex: 1 0 auto;
@@ -104,14 +110,19 @@ div {
   height: 100%;
 }
 
+.corp-board {
+  display: flex;
+  flex: 2 0 auto;
+}
+.runner-board {
+  display: flex;
+  flex: 1 0 auto;
+}
 .board {
   position: relative;
   display: flex;
   flex: 1 0 auto;
   align-content: center;
-}
-.board.corp {
-  flex: 2 0 auto;
 }
 
 .hud {

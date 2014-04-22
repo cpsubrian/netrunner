@@ -4,9 +4,9 @@ app.boot(function(err) {
   if (err) throw err;
 
   // Logging
-  require('cantina-log');
+  //require('cantina-log');
   if (!app.conf.get('test')) {
-    app.log.replaceConsole();
+    //app.log.replaceConsole();
   }
 
   // Error handler.

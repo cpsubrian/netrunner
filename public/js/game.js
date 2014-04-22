@@ -4,7 +4,7 @@ var app = require('app')
 // Define app regions.
 app.addRegions({
   'sidebar': '.sidebar',
-  'play': '.play'
+  'play': '.play-container'
 });
 
 // Load plugins.
@@ -15,7 +15,4 @@ app.addInitializer(function () {
   app.play.show(new PlayView());
 });
 
-// Start the app.
-$(function () {
-  app.start();
-});
+module.exports = app;

@@ -1,12 +1,17 @@
 var app = require('app')
   , Marionette = require('marionette')
   , Backbone = require('backbone')
-  , Model = Backbone.Model;
+  , Model = Backbone.Model
+  , _ = require('underscore');
 
 /**
  * Returns an instance of a card view, from its code.
  */
-app.getCard = function (code, cb) {
+app.getCard = function (code, options, cb) {
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
   require(['cards/' + code], function (card) {
     mixins = card.mixins.map(function (mixin) {
       return 'mixins/cards/' + mixin;
@@ -18,9 +23,9 @@ app.getCard = function (code, cb) {
         card.mixins = Array.prototype.slice.call(arguments);
       }
       var CardView = Marionette.ItemView.extend(card);
-      cb(new CardView({
+      cb(new CardView(_.extend({}, {
         model: card._model
-      }));
+      }, options)));
     });
   });
 };

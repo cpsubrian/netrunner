@@ -32,8 +32,10 @@ module.exports = Marionette.Layout.extend({
   },
 
   onCardMouseEnter: function (card) {
-    this.ui.viewCardImg.attr('src', 'http://netrunnerdb.com/' + card.model.get('largeimagesrc'));
-    this.ui.viewCard.addClass('show');
+    if (!card.faceDown) {
+      this.ui.viewCardImg.attr('src', 'http://netrunnerdb.com/' + card.model.get('largeimagesrc'));
+      this.ui.viewCard.addClass('show');
+    }
   },
 
   onCardMouseLeave: function (card) {

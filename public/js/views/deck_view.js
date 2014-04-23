@@ -6,6 +6,7 @@ module.exports = Marionette.ItemView.extend({
   className: 'deck',
 
   initialize: function (options) {
+    this.side = options.side;
     this.cards = options.cards;
   },
 

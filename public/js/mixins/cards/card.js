@@ -16,12 +16,25 @@ module.exports = {
     img: 'img'
   },
 
-  initialize: function () {
+  initialize: function (options) {
+    this.faceDown = options.faceDown || false;
+
     // Preload images.
     var small = new Image();
     small.src = 'http://netrunnerdb.com/' + this.model.get('imagesrc');
     var large = new Image();
     large.src = 'http://netrunnerdb.com/' + this.model.get('largeimagesrc');
+  },
+
+  templateHelpers: function () {
+    var data = {};
+    if (this.faceDown) {
+      data.img = '/images/cards/misc/card-back-' + this.model.get('side_code') + '.jpg';
+    }
+    else {
+      data.img = 'http://netrunnerdb.com/' + this.model.get('imagesrc');
+    }
+    return data;
   },
 
   onMouseEnter: function () {

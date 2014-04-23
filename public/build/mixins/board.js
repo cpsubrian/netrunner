@@ -14,7 +14,7 @@ define(function (require, exports, module) {
 	      , cardWidth = math.cardSize(null, cardHeight);
 	
 	    this.ui.singles.css({
-	      width: (cardWidth + 1) + 'px',
+	      width: (cardWidth) + 'px',
 	      height: (cardHeight) + 'px'
 	    });
 	

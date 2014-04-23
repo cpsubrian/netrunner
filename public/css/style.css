@@ -28,7 +28,7 @@ div {
 /* Bordered Area */
 .area {
   position: relative;
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  border: 1px solid rgba(0, 0, 0, 0.3);
   margin: 5px;
   border-radius: 5px;
 }
@@ -37,9 +37,8 @@ div {
   bottom: 0;
   right: 0;
   display: inline-block;
-  background: rgba(255, 255, 255, 0.4);
-  border: 1px solid rgba(0, 0, 0, 0.2);
-  color: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.5);
+  color: rgba(255, 255, 255, 0.7);
   margin-top: -5px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 4px;
@@ -50,8 +49,8 @@ div {
   cursor: help;
 }
 .area .label:hover {
-  background: rgba(255, 255, 255, 0.8);
-  border-color: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.8);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 /* Sidebar */
@@ -245,7 +244,12 @@ div {
 
 /* Cards */
 .card {
-  padding: 1px;
+  border: 2px solid transparent;
+  font-size: 0;
+  border-radius: 5%;
+}
+.card:hover {
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 /* Single Cards */

@@ -1,8 +1,6 @@
-module.exports = require('marionette').ItemView.extend({
-  mixins: [
-    require('mixins/card')
-  ],
-  data: {
+module.exports = {
+  mixins: ['card'],
+  model: {
     "last-modified": "2014-01-24T06:40:16-05:00",
     "code": "03002",
     "title": "Custom Biotics: Engineered for Success",
@@ -32,4 +30,4 @@ module.exports = require('marionette').ItemView.extend({
     "nbopinions": 0,
     "opinions": []
   }
-});
+};

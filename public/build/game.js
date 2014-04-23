@@ -10,6 +10,7 @@ define(function (require, exports, module) {
 	
 	// Load plugins.
 	require('plugins/mixins');
+	require('plugins/cards');
 	
 	// Create and attach the play view.
 	app.addInitializer(function () {

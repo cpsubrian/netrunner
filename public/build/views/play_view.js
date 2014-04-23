@@ -23,8 +23,8 @@ define(function (require, exports, module) {
 	    this.corpView = new CorpView();
 	    this.runnerView = new RunnerView();
 	
-	    app.vent.on('card:view', this.onCardView.bind(this));
-	    app.vent.on('card:hide', this.onCardHide.bind(this));
+	    app.vent.on('card:mouse:enter', this.onCardMouseEnter.bind(this));
+	    app.vent.on('card:mouse:leave', this.onCardMouseLeave.bind(this));
 	  },
 	
 	  onRender: function () {
@@ -32,12 +32,12 @@ define(function (require, exports, module) {
 	    this.runner.show(this.runnerView);
 	  },
 	
-	  onCardView: function (card) {
-	    this.ui.viewCardImg.attr('src', 'http://netrunnerdb.com/' + card.data.largeimagesrc);
+	  onCardMouseEnter: function (card) {
+	    this.ui.viewCardImg.attr('src', 'http://netrunnerdb.com/' + card.model.get('largeimagesrc'));
 	    this.ui.viewCard.addClass('show');
 	  },
 	
-	  onCardHide: function (card) {
+	  onCardMouseLeave: function (card) {
 	    this.ui.viewCard.removeClass('show');
 	  }
 	});

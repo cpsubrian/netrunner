@@ -1,5 +1,6 @@
 define(function (require, exports, module) {
-	var Marionette = require('marionette')
+	var app = require('app')
+	  , Marionette = require('marionette')
 	  , Board = require('mixins/board');
 	
 	module.exports = Marionette.ItemView.extend({
@@ -15,8 +16,8 @@ define(function (require, exports, module) {
 	
 	  onRender: function () {
 	    var self = this;
-	    require(['cards/03028'], function (Identity) {
-	      self.identity = new Identity();
+	    app.getCard('03028', function (card) {
+	      self.identity = card;
 	      self.ui.grip.append(self.identity.render().el);
 	    });
 	  }

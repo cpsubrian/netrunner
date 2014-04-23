@@ -9,6 +9,7 @@ app.addRegions({
 
 // Load plugins.
 require('plugins/mixins');
+require('plugins/cards');
 
 // Create and attach the play view.
 app.addInitializer(function () {

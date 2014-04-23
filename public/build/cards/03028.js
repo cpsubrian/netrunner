@@ -1,9 +1,7 @@
 define(function (require, exports, module) {
-	module.exports = require('marionette').ItemView.extend({
-	  mixins: [
-	    require('mixins/card')
-	  ],
-	  data: {
+	module.exports = {
+	  mixins: ['card'],
+	  model: {
 	    "last-modified": "2014-01-24T06:40:16-05:00",
 	    "code": "03028",
 	    "title": "Rielle \"Kit\" Peddler: Transhuman",
@@ -34,5 +32,5 @@ define(function (require, exports, module) {
 	    "nbopinions": 0,
 	    "opinions": []
 	  }
-	});
+	};
 });

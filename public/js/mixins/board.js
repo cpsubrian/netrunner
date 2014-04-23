@@ -9,7 +9,8 @@ var board = module.exports = {
     zones: '.zone'
   },
   onRender: function () {
-    var cardHeight = $(window).height() / 5.5
+    var wH = $(window).height()
+      , cardHeight = ((wH / 5.5) < 160) ? (wH / 5.5) : 160
       , cardWidth = math.cardSize(null, cardHeight);
 
     this.ui.singles.css({

@@ -14,8 +14,8 @@ define(function (require, exports, module) {
 	      , cardWidth = math.cardSize(null, cardHeight);
 	
 	    this.ui.singles.css({
-	      width: cardWidth + 'px',
-	      height: cardHeight + 'px'
+	      width: (cardWidth + 1) + 'px',
+	      height: (cardHeight) + 'px'
 	    });
 	
 	    this.ui.zones.height(cardHeight);

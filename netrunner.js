@@ -23,7 +23,6 @@ app.boot(function(err) {
   require('cantina-web');
 
   // External plugins
-  require('cantina-amino');
   require('cantina-redis');
   require('cantina-models');
   require('cantina-validators');

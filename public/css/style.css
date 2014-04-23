@@ -1,10 +1,12 @@
 body, html {
   margin: 0;
   padding: 0;
-  background: url(/images/backgrounds/black_linen_v2.png) top left repeat;
-  font-family: 'Titillium Web', sans-serif;
-  font-size: 87%;
   height: 100%;
+}
+body {
+  font-family: 'Titillium Web', sans-serif;
+  font-size: 77%;
+  background: url(/images/backgrounds/black_linen.png) top left repeat;
 }
 div {
   box-sizing: border-box;
@@ -39,7 +41,6 @@ div {
   display: inline-block;
   background: rgba(0, 0, 0, 0.5);
   color: rgba(255, 255, 255, 0.7);
-  margin-top: -5px;
   border-top-left-radius: 5px;
   border-bottom-right-radius: 4px;
   padding: 0 3px;
@@ -57,6 +58,7 @@ div {
 .sidebar {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   width: 240px;
 }
 .sidebar .menu {
@@ -116,6 +118,8 @@ div {
   height: 100%;
 }
 
+
+/* Player boards */
 .corp-board {
   display: flex;
   flex: 1 0 auto;
@@ -129,10 +133,16 @@ div {
   flex: 1 0 auto;
   align-content: center;
 }
+.playmat {
+  flex: 1 0 auto;
+  display: flex;
+}
 
+/* HUD */
 .hud {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
   width: 150px;
 }
 .hud .player .label {
@@ -188,12 +198,6 @@ div {
   flex: 1 0 auto;
 }
 
-
-.playmat {
-  flex: 1 0 auto;
-  display: flex;
-}
-
 /* Servers */
 .servers {
   flex: 1 0 auto;
@@ -212,7 +216,7 @@ div {
 }
 .servers .server .root {
   position: relative;
-  margin: 5px;
+  flex-shrink: 0;
 }
 .servers .server .ice {
   flex: 1 0 auto;
@@ -236,6 +240,7 @@ div {
 }
 .rig .single {
   position: relative;
+  flex-shrink: 0;
 }
 .rig .zone {
   position: relative;
@@ -244,12 +249,20 @@ div {
 
 /* Cards */
 .card {
-  border: 2px solid transparent;
+  position: relative;
   font-size: 0;
   border-radius: 5%;
 }
-.card:hover {
-  border-color: rgba(255, 255, 255, 0.5);
+.card .card-overlay {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  border-radius: 5px;
+}
+.card:hover .card-overlay {
+  box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.75);
 }
 
 /* Single Cards */

@@ -3,7 +3,6 @@
   "dependencies": {
     "cantina": "cantina/cantina#3.x",
     "cantina-web": "cantina/cantina-web#3.2.x",
-    "cantina-amino": "cantina/cantina-amino#3.x",
     "cantina-redis": "cantina/cantina-redis#3.x",
     "cantina-mongo": "cantina/cantina-mongo#3.x",
     "cantina-log": "cantina/cantina-log#3.x",

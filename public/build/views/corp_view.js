@@ -18,7 +18,7 @@ define(function (require, exports, module) {
 	    var self = this;
 	    require(['cards/03002'], function (Identity) {
 	      self.identity = new Identity();
-	      self.ui.hq.find('.root').append(self.identity.render().el);
+	      //self.ui.hq.find('.root').append(self.identity.render().el);
 	    });
 	  }
 	});

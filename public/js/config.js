@@ -10,12 +10,14 @@ requirejs.config({
     backbone: '../vendor/backbone',
     handlebars: '../vendor/handlebars',
     marionette: '../vendor/backbone.marionette',
+    async: '../vendor/async',
 
     // Handlebars template loader/compiler.
     text: '../vendor/require-text',
     hbs: '../vendor/require-hbs',
 
-    // Templates.
+    // Other directories.
+    data: '../data',
     templates: '../templates'
   },
   // Underscore and Backbone are not AMD-capable per default,

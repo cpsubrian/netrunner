@@ -20,5 +20,9 @@ module.exports = Marionette.ItemView.extend({
       self.identity = card;
       self.ui.hq.find('.root').append(self.identity.render().el);
     });
+    app.getDeck('corp', function (deck) {
+      self.deck = deck;
+      self.ui.rd.find('.root').append(deck.render().el);
+    });
   }
 });

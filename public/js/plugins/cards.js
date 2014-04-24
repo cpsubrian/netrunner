@@ -13,18 +13,14 @@ app.getCard = function (code, options, cb) {
     options = {};
   }
   require(['cards/' + code], function (card) {
-    mixins = card.mixins.map(function (mixin) {
+    mixins = card.view.mixins.map(function (mixin) {
       return 'mixins/cards/' + mixin;
     });
     require(mixins, function () {
-      if (!card._model) {
-        card._model  = new Model(card.model);
-        delete card.model;
-        card.mixins = Array.prototype.slice.call(arguments);
-      }
-      var CardView = Marionette.ItemView.extend(card);
+      var mixins = Array.prototype.slice.call(arguments);
+      var CardView = Marionette.ItemView.extend(_.extend({}, card.view, {mixins: mixins}));
       cb(new CardView(_.extend({}, {
-        model: card._model
+        model: new Model(card.model)
       }, options)));
     });
   });

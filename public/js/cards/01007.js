@@ -1,5 +1,4 @@
 module.exports = {
-  mixins: ['card'],
   model: {
     "last-modified": "2014-02-26T11:50:43-05:00",
     "code": "01007",
@@ -31,5 +30,8 @@ module.exports = {
     "largeimagesrc": "/web/bundles/netrunnerdbcards/images/cards/en-large/01007.png",
     "nbopinions": 0,
     "opinions": []
+  },
+  view: {
+    mixins: ['card'],
   }
 };

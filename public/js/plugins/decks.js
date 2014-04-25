@@ -2,22 +2,15 @@ var app = require('app')
   , async = require('async')
   , DeckView = require('views/deck_view');
 
-app.getDeck = function (name, cb) {
+app.loadDeck = function (name, cb) {
   require(['text!data/decks/' + name + '.json'], function (data) {
     var deck = JSON.parse(data);
-    async.map(
-      deck.cards,
-      function (code, next) {
-        app.getCard(code, {faceDown: true}, function (card) {
-          next(null, card);
-        });
-      },
-      function (err, cards) {
-        cb(new DeckView({
-          side: deck.side,
-          cards: cards
-        }));
-      }
-    );
+    var codes = deck.cards;
+    codes.push(deck.identity);
+    app.cards.load(codes, function () {
+      deck.identity = app.cards.getCard(deck.identity);
+      deck.collection = app.cards.getCollection(deck.cards, {faceDown: true});
+      cb(null, new DeckView(deck));
+    });
   });
 };

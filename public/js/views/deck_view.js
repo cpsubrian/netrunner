@@ -7,13 +7,6 @@ module.exports = Marionette.ItemView.extend({
 
   initialize: function (options) {
     this.side = options.side;
-    this.cards = options.cards;
-  },
-
-  onRender: function () {
-    var self = this;
-    this.cards.forEach(function (card) {
-      self.$el.append(card.render().el);
-    });
+    this.identity = options.identity;
   }
 });

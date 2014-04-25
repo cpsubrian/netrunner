@@ -15,12 +15,10 @@ module.exports = Marionette.ItemView.extend({
 
   onRender: function () {
     var self = this;
-    app.getCard('03028', function (card) {
-      self.identity = card;
-      self.ui.grip.append(self.identity.render().el);
-    });
-    app.getDeck('runner', function (deck) {
+    app.loadDeck('runner', function (err, deck) {
+      if (err) return app.emit('error', err);
       self.deck = deck;
+      self.ui.grip.append(deck.identity.render().el);
       self.ui.stack.append(deck.render().el);
     });
   }

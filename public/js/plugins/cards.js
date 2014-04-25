@@ -2,26 +2,74 @@ var app = require('app')
   , Marionette = require('marionette')
   , Backbone = require('backbone')
   , Model = Backbone.Model
-  , _ = require('underscore');
+  , _ = require('underscore')
+  , async = require('async');
+
+// Prep all the card mixins.
+require('mixins/cards/card');
+
+// Cards namespace.
+app.cards = {};
 
 /**
- * Returns an instance of a card view, from its code.
+ * Prime the require cache for an array of card codes.
  */
-app.getCard = function (code, options, cb) {
+app.cards.load = function (codes, cb) {
+  var moduleNames = codes.map(function (code) {
+    return 'cards/' + code;
+  });
+  require(moduleNames, cb);
+};
+
+/**
+ * Return a collection of cards, from an array of codes.
+ */
+app.cards.getCollection = function (codes, options) {
+  var models = [];
   if (typeof options === 'function') {
     cb = options;
     options = {};
   }
-  require(['cards/' + code], function (card) {
-    mixins = card.view.mixins.map(function (mixin) {
-      return 'mixins/cards/' + mixin;
-    });
-    require(mixins, function () {
-      var mixins = Array.prototype.slice.call(arguments);
-      var CardView = Marionette.ItemView.extend(_.extend({}, card.view, {mixins: mixins}));
-      cb(new CardView(_.extend({}, {
-        model: new Model(card.model)
-      }, options)));
-    });
+  codes.forEach(function (code) {
+    models.push(app.cards.getModel(code, options));
   });
+  return new Backbone.Collection(models);
+};
+
+/**
+ * Construct a card view from a code.
+ */
+app.cards.getModel = function (code, options) {
+  var card;
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  card = require('cards/' + code);
+  return new Backbone.Model(_.extend({}, card.model, options));
+};
+
+/**
+ * Construct a card model from a code.
+ */
+app.cards.getView = function (code, options) {
+  var card, mixins;
+  if (typeof options === 'function') {
+    cb = options;
+    options = {};
+  }
+  card = require('cards/' + code);
+  mixins = card.view.mixins.map(function (mixin) {
+    return require('mixins/cards/' + mixin);
+  });
+  return Marionette.ItemView.extend(_.extend({}, card.view, {mixins: mixins}, options));
+};
+
+/**
+ * Return an instance of a card's view, from a code.
+ */
+app.cards.getCard = function (code, options) {
+  var model = app.cards.getModel(code, options);
+  var View = app.cards.getView(code, options);
+  return new View({model: model});
 };

@@ -17,13 +17,16 @@ module.exports = {
   },
 
   initialize: function (options) {
+    var self = this;
     this.faceDown = (this.model.get('faceDown') || options.faceDown) || false;
 
     // Preload images.
-    var small = new Image();
-    small.src = 'http://netrunnerdb.com/' + this.model.get('imagesrc');
-    var large = new Image();
-    large.src = 'http://netrunnerdb.com/' + this.model.get('largeimagesrc');
+    setTimeout(function () {
+      var small = new Image();
+      small.src = 'http://netrunnerdb.com/' + self.model.get('imagesrc');
+      var large = new Image();
+      large.src = 'http://netrunnerdb.com/' + self.model.get('largeimagesrc');
+    }, 1);
   },
 
   templateHelpers: function () {
@@ -38,11 +41,11 @@ module.exports = {
   },
 
   onMouseEnter: function () {
-    app.vent.trigger('card:mouse:enter', this);
+    app.vent.trigger('card:view:show', this);
   },
 
   onMouseLeave: function () {
-    app.vent.trigger('card:mouse:leave', this);
+    app.vent.trigger('card:view:hide', this);
   }
 
 };

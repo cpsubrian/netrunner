@@ -31,6 +31,6 @@ module.exports = {
     "opinions": []
   },
   view: {
-    mixins: ['card'],
+    mixins: ['identity'],
   }
 };

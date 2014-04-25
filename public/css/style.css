@@ -46,7 +46,7 @@ div {
   padding: 0 3px;
   text-transform: uppercase;
   font-size: 0.85em;
-  z-index: 1000;
+  z-index: 10;
   cursor: help;
 }
 .area .label:hover {
@@ -275,14 +275,56 @@ div {
   box-shadow: inset 0 0 10px 2px rgba(255, 255, 255, 0.75);
 }
 
+/* Identity */
+.identity .view {
+  position: absolute;
+  left: 3px;
+  bottom: 3px;
+  display: block;
+  width: 24px;
+  height: 24px;
+  font-size: 14px;
+  line-height: 24px;
+  background: rgba(0, 0, 0, 0.6);
+  color: rgba(255, 255, 255, 0.7);
+  text-align: center;
+  border-radius: 5px;
+}
+.identity .view:hover {
+  background: rgba(0, 0, 0, 0.75);
+  color: rgba(255, 255, 255, 0.85);
+}
+
 /* Deck */
 .deck {
   position: relative;
+  cursor: pointer;
 }
 .deck .card {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+/* Hand */
+.hand-container {
+  position: absolute;
+  bottom: 200px;
+  left: 30%;
+  z-index: 20;
+}
+.hand {
+  position: relative;
+}
+.hand .card {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+.hand .card img {
+  width: 150px;
+  height: 209px;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* Card Viewer */
@@ -294,7 +336,7 @@ div {
   width: 358px;
   height: 500px;
   margin-top: -250px;
-  z-index: 2000;
+  z-index: 1000;
   opacity: 0;
   box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.7);
   border-radius: 20px;

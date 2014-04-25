@@ -7,6 +7,7 @@ var app = require('app')
 
 // Prep all the card mixins.
 require('mixins/cards/card');
+require('mixins/cards/identity');
 
 // Cards namespace.
 app.cards = {};

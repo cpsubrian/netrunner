@@ -22,8 +22,8 @@ module.exports = Marionette.Layout.extend({
     this.corpView = new CorpView();
     this.runnerView = new RunnerView();
 
-    app.vent.on('card:mouse:enter', this.onCardMouseEnter.bind(this));
-    app.vent.on('card:mouse:leave', this.onCardMouseLeave.bind(this));
+    app.vent.on('card:view:show', this.onCardMouseEnter.bind(this));
+    app.vent.on('card:view:hide', this.onCardMouseLeave.bind(this));
   },
 
   onRender: function () {

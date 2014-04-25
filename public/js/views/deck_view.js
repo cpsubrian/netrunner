@@ -11,5 +11,9 @@ module.exports = Marionette.CollectionView.extend({
   initialize: function (options) {
     this.side = options.side;
     this.identity = options.identity;
+  },
+
+  draw: function () {
+    return this.collection.shift();
   }
 });

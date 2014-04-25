@@ -26,10 +26,6 @@ app.cards.load = function (codes, cb) {
  */
 app.cards.getCollection = function (codes, options) {
   var models = [];
-  if (typeof options === 'function') {
-    cb = options;
-    options = {};
-  }
   codes.forEach(function (code) {
     models.push(app.cards.getModel(code, options));
   });
@@ -40,12 +36,7 @@ app.cards.getCollection = function (codes, options) {
  * Construct a card view from a code.
  */
 app.cards.getModel = function (code, options) {
-  var card;
-  if (typeof options === 'function') {
-    cb = options;
-    options = {};
-  }
-  card = require('cards/' + code);
+  var card = require('cards/' + code);
   return new Backbone.Model(_.extend({}, card.model, options));
 };
 
@@ -53,13 +44,8 @@ app.cards.getModel = function (code, options) {
  * Construct a card model from a code.
  */
 app.cards.getView = function (code, options) {
-  var card, mixins;
-  if (typeof options === 'function') {
-    cb = options;
-    options = {};
-  }
-  card = require('cards/' + code);
-  mixins = card.view.mixins.map(function (mixin) {
+  var card = require('cards/' + code);
+  var mixins = card.view.mixins.map(function (mixin) {
     return require('mixins/cards/' + mixin);
   });
   return Marionette.ItemView.extend(_.extend({}, card.view, {mixins: mixins}, options));

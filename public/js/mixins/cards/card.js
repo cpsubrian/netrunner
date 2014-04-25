@@ -17,7 +17,7 @@ module.exports = {
   },
 
   initialize: function (options) {
-    this.faceDown = options.faceDown || false;
+    this.faceDown = (this.model.get('faceDown') || options.faceDown) || false;
 
     // Preload images.
     var small = new Image();

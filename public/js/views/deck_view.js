@@ -1,9 +1,12 @@
 var app = require('app')
   , Marionette = require('marionette');
 
-module.exports = Marionette.ItemView.extend({
-  template: require('hbs!deck'),
+module.exports = Marionette.CollectionView.extend({
   className: 'deck',
+
+  getItemView: function (model) {
+    return app.cards.getView(model.get('code'));
+  },
 
   initialize: function (options) {
     this.side = options.side;

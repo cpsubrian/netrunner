@@ -20,6 +20,7 @@ module.exports = Marionette.ItemView.extend({
       self.deck = deck;
       self.ui.grip.append(deck.identity.render().el);
       self.ui.stack.append(deck.render().el);
+      self.triggerMethod('deck:loaded');
     });
   }
 });

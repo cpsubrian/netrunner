@@ -35,6 +35,15 @@ var board = module.exports = {
     this.ui.hand.append(this.hand.render().el);
   },
 
+  onDeckLoaded: function () {
+    /*
+    this.hand.$el.parent().css({
+      top: (this.$el.offset().top - this.deck.$el.offset().top) + 'px',
+      left: (this.$el.offset().left - this.deck.$el.offset().left) + 'px'
+    });
+    */
+  },
+
   onClickDeck: function (e) {
     e.preventDefault();
     this.draw();
@@ -42,7 +51,6 @@ var board = module.exports = {
 
   draw: function () {
     var card = this.deck.draw();
-    console.log(card.attributes);
     card.set('faceDown', false);
     this.hand.collection.add(card);
   }

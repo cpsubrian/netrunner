@@ -21,6 +21,7 @@ module.exports = Marionette.ItemView.extend({
       self.deck = deck;
       self.ui.hq.find('.root').append(deck.identity.render().el);
       self.ui.rd.find('.root').append(deck.render().el);
+      self.triggerMethod('deck:loaded');
     });
   }
 });

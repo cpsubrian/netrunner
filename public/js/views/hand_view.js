@@ -12,12 +12,12 @@ module.exports = Marionette.CollectionView.extend({
     var len = this.collection.length;
     this.children.forEach(function (child, i) {
       var offset = i - ((len-1)/2)
-        , deg = 2 * offset * Math.abs(offset)
+        , deg = 4 * offset
         , rotate = Math.abs(deg) < 45 ? deg : (45 * deg / Math.abs(deg))
-        , leftConst = 60
+        , leftConst = 90 - (len * 2)
         , bottomConst = 50
         , left = (offset * leftConst)
-        , bottom = (offset ? (bottomConst + (-1 * Math.abs(offset * offset * offset / (offset / 3)))) : bottomConst);
+        , bottom = (offset ? (bottomConst + (-1.5 * Math.abs(offset * offset))) : bottomConst);
 
       if (i === (len -1)) {
         child.$el.css({

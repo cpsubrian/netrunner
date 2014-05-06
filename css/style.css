@@ -6,7 +6,7 @@ body, html {
 body {
   font-family: 'Titillium Web', sans-serif;
   font-size: 77%;
-  background: url(/images/backgrounds/black_linen.png) top left repeat;
+  background: url(images/backgrounds/black_linen.png) top left repeat;
 }
 div {
   box-sizing: border-box;
